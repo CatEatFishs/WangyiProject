@@ -10,6 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Window;
 import android.view.WindowManager;
 
+import com.umeng.analytics.MobclickAgent;
 import com.ysr.BuildConfig;
 import com.ysr.R;
 import com.ysr.common.baseapp.AppManager;
@@ -265,7 +266,7 @@ public abstract class BaseActivity<T extends BasePresenter, E extends BaseModel>
         //debug版本不统计crash
         if (!BuildConfig.LOG_DEBUG) {
             //友盟统计
-           // MobclickAgent.onResume(this);
+           MobclickAgent.onResume(this);
         }
     }
 
@@ -275,7 +276,7 @@ public abstract class BaseActivity<T extends BasePresenter, E extends BaseModel>
         //debug版本不统计crash
         if (!BuildConfig.LOG_DEBUG) {
             //友盟统计
-            //MobclickAgent.onPause(this);
+            MobclickAgent.onPause(this);
         }
     }
 
