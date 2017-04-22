@@ -16,20 +16,20 @@ android {
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
-    signingConfigs {
-        release {
-            storeFile file(RELEASE_STORE_FILE)
-            storePassword RELEASE_STORE_PASSWORD
-            keyAlias RELEASE_KEY_ALIAS
-            keyPassword RELEASE_KEY_PASSWORD
-            v2SigningEnabled false
-        }
-    }
+//    signingConfigs {
+//        release {
+//            storeFile file(RELEASE_STORE_FILE)
+//            storePassword RELEASE_STORE_PASSWORD
+//            keyAlias RELEASE_KEY_ALIAS
+//            keyPassword RELEASE_KEY_PASSWORD
+//            v2SigningEnabled false
+//        }
+//    }
     buildTypes {
         release {
             buildConfigField "boolean", "LOG_DEBUG", "false"
             minifyEnabled false
-            signingConfig signingConfigs.release
+            //signingConfig signingConfigs.release
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             //apk命名
             android.applicationVariants.all { variant ->
@@ -40,13 +40,13 @@ android {
                         def fileName
                         if (variant.buildType.name == "release") {
 
-                            fileName  = "BaseProject-${defaultConfig.versionCode}-${defaultConfig.versionName}-${releaseTime()}.apk"
+                            fileName  = "DbanPj-${defaultConfig.versionCode}-${defaultConfig.versionName}-${releaseTime()}.apk"
                         } else if (variant.buildType.name == "debug") {
 
-                            fileName   = "BaseProject-${defaultConfig.versionCode}-${defaultConfig.versionName}-${releaseTime()}_debug.apk"
+                            fileName   = "DbanPj-${defaultConfig.versionCode}-${defaultConfig.versionName}-${releaseTime()}_debug.apk"
                         } else if (variant.buildType.name == "dev") {
 
-                            fileName   = "BaseProject-${defaultConfig.versionCode}-${defaultConfig.versionName}-${releaseTime()}_devg.apk"
+                            fileName   = "DbanPj-${defaultConfig.versionCode}-${defaultConfig.versionName}-${releaseTime()}_devg.apk"
                         }
 
                         output.outputFile = new File(outputFile.parent, fileName)
@@ -59,7 +59,7 @@ android {
         }
     }
     dataBinding {
-        enabled = true
+        enabled = false
     }
 
     //设置虚拟机堆内存空间大小，避免在编译期间OOM
