@@ -23,14 +23,7 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <service
-            android:name="com.baidu.location.f"
-            android:enabled="true"
-            android:process=":remote">
-            <intent-filter>
-                <action android:name="com.baidu.location.service_v2.2" />
-            </intent-filter>
-        </service>
+
 
         <meta-data
             android:name="com.baidu.lbsapi.API_KEY"
@@ -49,7 +42,6 @@
         <activity
             android:name=".photopicker.ImgSelActivity"
             android:theme="@style/SelTheme" />
-        <activity android:name=".map.LocationActivity"></activity>
     </application>
 
 </manifest>
