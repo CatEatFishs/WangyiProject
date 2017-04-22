@@ -43,7 +43,7 @@
         <item name="@android:windowExitAnimation">@anim/bottom_dialog_exit</item>
     </style>
 
-    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="MyAppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!--  Customize your theme here.  -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
@@ -54,11 +54,11 @@
         <item name="dayNightThreeTextColor">@color/day_three_text_color</item>
         <item name="dayNightBackgroundDrawable">@color/day_backgroup_color</item>
     </style>
-    <!-- ���������� -->
+
     <style name="AppTheme.Launcher" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:windowBackground">@color/white</item>
     </style>
-    <!-- �������⣬�˴�ֱ�Ӻ�AppThemeһ�� -->
+
     <style name="DayTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
@@ -69,7 +69,7 @@
         <item name="dayNightThreeTextColor">@color/day_three_text_color</item>
         <item name="dayNightBackgroundDrawable">@color/day_backgroup_color</item>
     </style>
-    <!-- ҹ������ -->
+
     <style name="NightTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorPrimary">@color/night_backgroup_color</item>
         <item name="colorPrimaryDark">@color/night_backgroup_color</item>
@@ -80,12 +80,12 @@
         <item name="dayNightThreeTextColor">@color/night_there_text_color</item>
         <item name="dayNightBackgroundDrawable">@color/night_there_text_color</item>
     </style>
-    <!-- ���ڵ��뵭������ -->
+
     <style name="Animation.Popup" parent="@android:style/Animation">
         <item name="android:windowEnterAnimation">@android:anim/fade_in</item>
         <item name="android:windowExitAnimation">@android:anim/fade_out</item>
     </style>
-    <!-- ��ͨdialog -->
+
     <style name="CustomProgressDialog" parent="@style/CustomDialog">
         <item name="android:windowBackground">@android:color/transparent</item>
         <item name="android:windowNoTitle">true</item>

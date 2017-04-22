@@ -1,38 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tl="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.ysr.MainActivity">
 
-    <RelativeLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+    <FrameLayout
+        android:id="@+id/fl_body"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="horizontal">
+        android:background="?attr/dayNightBackground"
+        app:dayNightBackgroundAttr="dayNightBackground"
+        tools:ignore="MissingPrefix" />
 
-        <com.ysr.irecyclerview.IRecyclerView
-            android:id="@+id/irc"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:loadMoreEnabled="true"
-            app:refreshEnabled="true"
-            app:refreshHeaderLayout="@layout/layout_irecyclerview_refresh_header" />
-        <TextView
-            android:layout_width="match_parent"
-            android:id="@+id/tv"
-            android:layout_height="wrap_content" />
-    </RelativeLayout>
-
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="wrap_content"
+    <com.flyco.tablayout.CommonTabLayout
+        android:id="@+id/tab_layout"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="16dp"
-        android:src="@mipmap/ic_arrow_upward"
-        app:backgroundTint="@color/main_color"
-        app:layout_behavior="com.ysr.widget.ScrollAwareFABBehavior" />
-
-</android.support.design.widget.CoordinatorLayout>
+        android:layout_alignParentBottom="true"
+        android:background="?attr/dayNightBackground"
+        android:padding="5dp"
+        app:dayNightBackgroundAttr="dayNightBackground"
+        tl:tl_iconHeight="20dp"
+        tl:tl_iconWidth="20dp"
+        tl:tl_indicator_color="@color/gray"
+        tl:tl_indicator_height="0dp"
+        tl:tl_textSelectColor="@color/orange"
+        tl:tl_textUnselectColor="@color/light_gray"
+        tl:tl_textsize="11sp"
+        tl:tl_underline_height="0dp" />
+</RelativeLayout>
 
