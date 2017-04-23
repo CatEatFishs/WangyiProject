@@ -103,5 +103,6 @@ dependencies {
     compile 'com.android.support:cardview-v7:23.+'
     compile 'com.android.support:support-v4:23.+'
     compile 'com.yuyh.easyadapter:library:1.0.0'
+    compile files('libs/BaiduLBS_Android.jar')
     testCompile 'junit:junit:4.12'
 }
