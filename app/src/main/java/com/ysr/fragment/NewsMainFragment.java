@@ -1,5 +1,6 @@
 package com.ysr.fragment;
 
+import android.content.Intent;
 import android.support.v7.widget.LinearLayoutManager;
 import android.view.View;
 
@@ -8,6 +9,7 @@ import com.ysr.adapter.NewsAdapter;
 import com.ysr.common.base.BaseFragment;
 import com.ysr.fragment.bean.NewsInfo;
 import com.ysr.irecyclerview.IRecyclerView;
+import com.ysr.map.LocationActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -52,6 +54,7 @@ public class NewsMainFragment extends BaseFragment implements NewsAdapter.OnNews
 
     @Override
     public void ondelItemClick(View view, int position, NewsInfo info) {
-
+        Intent intent = new Intent(getActivity(), LocationActivity.class);
+        startActivity(intent);
     }
 }
