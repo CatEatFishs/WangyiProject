@@ -10,7 +10,7 @@ import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.baidu.location.BDLocation;
@@ -32,7 +32,7 @@ import java.util.ArrayList;
 public class LocationActivity extends Activity {
     private LocationService locationService;
     private TextView LocationResult;
-    private Button startLocation;
+    private ImageView startLocation;
     private final int SDK_PERMISSION_REQUEST = 127;
     private String permissionInfo;
 
@@ -41,10 +41,10 @@ public class LocationActivity extends Activity {
         // TODO Auto-generated method stub
         super.onCreate(savedInstanceState);
         // -----------demo view config ------------
-        setContentView(R.layout.location);
-        LocationResult = (TextView) findViewById(R.id.textView1);
+        setContentView(R.layout.activity_location);
+        LocationResult = (TextView) findViewById(R.id.textView);
         LocationResult.setMovementMethod(ScrollingMovementMethod.getInstance());
-        startLocation = (Button) findViewById(R.id.addfence);
+        startLocation = (ImageView) findViewById(R.id.addfence);
         getPersimmions();
     }
 
@@ -63,7 +63,7 @@ public class LocationActivity extends Activity {
                 permissions.add(Manifest.permission.ACCESS_COARSE_LOCATION);
             }
             /*
-			 * 读写权限和电话状态权限非必要权限(建议授予)只会申请一次，用户同意或者禁止，只会弹一次
+             * 读写权限和电话状态权限非必要权限(建议授予)只会申请一次，用户同意或者禁止，只会弹一次
 			 */
             // 读写权限
             if (addPermission(permissions, Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
@@ -109,23 +109,9 @@ public class LocationActivity extends Activity {
      * @param str
      */
     public void logMsg(String str) {
-        final String s = str;
         try {
-            if (LocationResult != null) {
-                new Thread(new Runnable() {
-                    @Override
-                    public void run() {
-                        LocationResult.post(new Runnable() {
-                            @Override
-                            public void run() {
-                                LocationResult.setText(s);
-                            }
-                        });
-
-                    }
-                }).start();
-            }
-            //LocationResult.setText(str);
+            if (LocationResult != null)
+                LocationResult.setText(str);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -162,14 +148,7 @@ public class LocationActivity extends Activity {
 
             @Override
             public void onClick(View v) {
-                if (startLocation.getText().toString().equals(getString(R.string.startlocation))) {
-                    locationService.start();// 定位SDK
-                    // start之后会默认发起一次定位请求，开发者无须判断isstart并主动调用request
-                    startLocation.setText(getString(R.string.stoplocation));
-                } else {
-                    locationService.stop();
-                    startLocation.setText(getString(R.string.startlocation));
-                }
+                locationService.start();
             }
         });
     }
@@ -266,9 +245,8 @@ public class LocationActivity extends Activity {
                 }
                 logMsg(sb.toString());
             }
+            locationService.stop();
         }
 
-        public void onConnectHotSpotMessage(String s, int i) {
-        }
     };
 }
