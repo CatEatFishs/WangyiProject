@@ -18,6 +18,7 @@ import com.baidu.location.BDLocationListener;
 import com.baidu.location.Poi;
 import com.ysr.R;
 import com.ysr.common.baseapp.BaseApplication;
+import com.ysr.common.commonutils.LogUtils;
 
 import java.util.ArrayList;
 
@@ -103,19 +104,7 @@ public class LocationActivity extends Activity {
 
     }
 
-    /**
-     * 显示请求字符串
-     *
-     * @param str
-     */
-    public void logMsg(String str) {
-        try {
-            if (LocationResult != null)
-                LocationResult.setText(str);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
+
 
 
     /***
@@ -243,10 +232,40 @@ public class LocationActivity extends Activity {
                     sb.append("\ndescribe : ");
                     sb.append("无法获取有效定位依据导致定位失败，一般是由于手机的原因，处于飞行模式下一般会造成这种结果，可以试着重启手机");
                 }
+                LogUtils.loge(sb.toString());
                 logMsg(sb.toString());
             }
             locationService.stop();
         }
 
+        @Override
+        public void onConnectHotSpotMessage(String s, int i) {
+
+        }
+
     };
+    /**
+     * 显示请求字符串
+     *
+     * @param str
+     */
+    public void logMsg(final String str) {
+        try {
+            if (LocationResult != null)
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        LocationResult.post(new Runnable() {
+                            @Override
+                            public void run() {
+                                LocationResult.setText(str);
+                            }
+                        });
+
+                    }
+                }).start();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }
