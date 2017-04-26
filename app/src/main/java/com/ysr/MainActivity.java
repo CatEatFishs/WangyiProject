@@ -5,7 +5,6 @@ import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
 import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
-import android.view.View;
 import android.view.ViewGroup;
 
 import com.flyco.tablayout.CommonTabLayout;
@@ -24,7 +23,7 @@ import butterknife.Bind;
 import rx.functions.Action1;
 
 
-public class MainActivity extends BaseActivity implements View.OnClickListener {
+public class MainActivity extends BaseActivity {
     @Bind(R.id.tab_layout)
     CommonTabLayout tabLayout;
 
@@ -120,14 +119,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         SwitchTo(currentTabPosition);
         tabLayout.setCurrentTab(currentTabPosition);
     }
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()) {
 
-        }
-
-
-    }
     /**
      * 菜单显示隐藏动画
      * @param showOrHide
