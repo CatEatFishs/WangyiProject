@@ -14,8 +14,8 @@ import com.flyco.tablayout.listener.OnTabSelectListener;
 import com.ysr.app.AppConstant;
 import com.ysr.app.bean.TabEntity;
 import com.ysr.common.base.BaseActivity;
-import com.ysr.common.commonutils.LogUtils;
 import com.ysr.common.daynightmodeutils.ChangeModeController;
+import com.ysr.fragment.FocusNewsFragment;
 import com.ysr.fragment.NewsMainFragment;
 
 import java.util.ArrayList;
@@ -28,7 +28,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     @Bind(R.id.tab_layout)
     CommonTabLayout tabLayout;
 
-    private String[] mTitles = {"首页", "美女","视频","关注"};
+    private String[] mTitles = {"新闻", "要闻","视频","我的"};
     private int[] mIconUnselectIds = {
             R.mipmap.ic_home_normal,R.mipmap.ic_girl_normal,R.mipmap.ic_video_normal,R.mipmap.ic_care_normal};
     private int[] mIconSelectIds = {
@@ -36,7 +36,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     private ArrayList<CustomTabEntity> mTabEntities = new ArrayList<>();
     private static int tabLayoutHeight;
     private NewsMainFragment newsMainFragment;
-    private NewsMainFragment newsMainFragment2;
+    private FocusNewsFragment newsMainFragment2;
     private NewsMainFragment newsMainFragment3;
     private NewsMainFragment newsMainFragment4;
     @Override
@@ -101,13 +101,13 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         int currentTabPosition = 0;
         if (savedInstanceState != null) {
             newsMainFragment = (NewsMainFragment) getSupportFragmentManager().findFragmentByTag("newsMainFragment");
-            newsMainFragment2 = (NewsMainFragment) getSupportFragmentManager().findFragmentByTag("newsMainFragment2");
+            newsMainFragment2 = (FocusNewsFragment) getSupportFragmentManager().findFragmentByTag("newsMainFragment2");
             newsMainFragment3 = (NewsMainFragment) getSupportFragmentManager().findFragmentByTag("newsMainFragment3");
             newsMainFragment4 = (NewsMainFragment) getSupportFragmentManager().findFragmentByTag("newsMainFragment4");
             currentTabPosition = savedInstanceState.getInt(AppConstant.HOME_CURRENT_TAB_POSITION);
         } else {
             newsMainFragment = new NewsMainFragment();
-            newsMainFragment2 = new NewsMainFragment();
+            newsMainFragment2 = new FocusNewsFragment();
             newsMainFragment3 = new NewsMainFragment();
             newsMainFragment4 = new NewsMainFragment();
 
@@ -159,39 +159,39 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
      * 切换
      */
     private void SwitchTo(int position) {
-        LogUtils.logd("主页菜单position" + position);
+
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         switch (position) {
-            //首页
+            //新闻
             case 0:
-                transaction.hide(newsMainFragment);
-                transaction.hide(newsMainFragment);
-                transaction.hide(newsMainFragment);
+                transaction.hide(newsMainFragment4);
+                transaction.hide(newsMainFragment3);
+                transaction.hide(newsMainFragment2);
                 transaction.show(newsMainFragment);
                 transaction.commitAllowingStateLoss();
                 break;
-            //美女
+            //要闻
             case 1:
                 transaction.hide(newsMainFragment);
-                transaction.hide(newsMainFragment);
-                transaction.hide(newsMainFragment);
-                transaction.show(newsMainFragment);
+                transaction.hide(newsMainFragment3);
+                transaction.hide(newsMainFragment4);
+                transaction.show(newsMainFragment2);
                 transaction.commitAllowingStateLoss();
                 break;
             //视频
             case 2:
                 transaction.hide(newsMainFragment);
-                transaction.hide(newsMainFragment);
-                transaction.hide(newsMainFragment);
-                transaction.show(newsMainFragment);
+                transaction.hide(newsMainFragment2);
+                transaction.hide(newsMainFragment4);
+                transaction.show(newsMainFragment3);
                 transaction.commitAllowingStateLoss();
                 break;
-            //关注
+            //我的
             case 3:
                 transaction.hide(newsMainFragment);
-                transaction.hide(newsMainFragment);
-                transaction.hide(newsMainFragment);
-                transaction.show(newsMainFragment);
+                transaction.hide(newsMainFragment2);
+                transaction.hide(newsMainFragment3);
+                transaction.show(newsMainFragment4);
                 transaction.commitAllowingStateLoss();
                 break;
             default:
